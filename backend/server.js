@@ -1,9 +1,12 @@
 
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 require("dotenv").config();
 
 const db = require("./config/database");
+const productosRoutes = require("./routes/productos.routes");
+const imagenesRoutes = require("./routes/imagenes.routes");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -12,6 +15,16 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Servir las imágenes guardadas en backend/uploads
+app.use(
+    "/uploads",
+    express.static(path.join(__dirname, "uploads"))
+);
+
+// Rutas de productos
+app.use("/api/productos", productosRoutes);
+app.use("/api/imagenes", imagenesRoutes);
 
 // Verificar servidor y conexión con MySQL
 app.get("/api/estado", async (req, res) => {
@@ -26,11 +39,15 @@ app.get("/api/estado", async (req, res) => {
                 : "Sin conexión"
         });
     } catch (error) {
-        console.error("Error de conexión con MySQL:", error.message);
+        console.error(
+            "Error de conexión con MySQL:",
+            error.message
+        );
 
         res.status(500).json({
             success: false,
-            mensaje: "El servidor funciona, pero no pudo conectarse a MySQL"
+            mensaje:
+                "El servidor funciona, pero no pudo conectarse a MySQL"
         });
     }
 });
@@ -53,5 +70,7 @@ app.use((req, res) => {
 
 // Iniciar servidor
 app.listen(PORT, () => {
-    console.log(`Servidor iniciado en http://localhost:${PORT}`);
+    console.log(
+        `Servidor iniciado en http://localhost:${PORT}`
+    );
 });
