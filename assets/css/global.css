@@ -1,0 +1,256 @@
+
+/* =========================================
+   PRIME FIT WEAR — GLOBAL
+   Desarrollado por Velora Studio
+========================================= */
+
+:root {
+    color-scheme: dark;
+
+    --color-bg: #0b0c0e;
+    --color-bg-soft: #101114;
+    --color-surface: #17191d;
+    --color-card: #1d1f23;
+
+    --color-white: #f4f4f4;
+    --color-gray: #a0a1a5;
+    --color-muted: #6d6f75;
+    --color-border: #2a2c30;
+    --color-silver: #d4d5d8;
+
+    --font-main: "Manrope", sans-serif;
+
+    --container-width: 1400px;
+    --container-padding: 6%;
+
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+
+    --transition: 250ms ease;
+}
+
+/* RESET */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+body {
+    min-width: 320px;
+    background: var(--color-bg);
+    color: var(--color-white);
+    font-family: var(--font-main);
+    font-size: 14px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+body.is-loading {
+    overflow: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+button {
+    color: inherit;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    cursor: pointer;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+::selection {
+    background: var(--color-silver);
+    color: var(--color-bg);
+}
+
+.container {
+    width: min(
+        calc(100% - var(--container-padding) * 2),
+        var(--container-width)
+    );
+    margin-inline: auto;
+}
+
+.section {
+    padding-block: 120px;
+}
+
+/* BOTONES */
+
+.button {
+    min-height: 52px;
+    padding: 0 24px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    white-space: nowrap;
+
+    transition:
+        background var(--transition),
+        color var(--transition),
+        border-color var(--transition),
+        transform var(--transition);
+}
+
+.button span {
+    font-size: 17px;
+    transition: transform var(--transition);
+}
+
+.button:hover span {
+    transform: translate(3px, -3px);
+}
+
+.button--primary {
+    background: var(--color-white);
+    color: #101114;
+}
+
+.button--primary:hover {
+    background: var(--color-silver);
+    transform: translateY(-2px);
+}
+
+.button--secondary {
+    border-color: #55575c;
+    background: rgb(255 255 255 / 2%);
+    color: var(--color-white);
+}
+
+.button--secondary:hover {
+    border-color: var(--color-white);
+    background: rgb(255 255 255 / 6%);
+}
+
+.button--light {
+    background: var(--color-white);
+    color: var(--color-bg);
+}
+
+.button--light:hover {
+    background: var(--color-silver);
+    transform: translateY(-2px);
+}
+
+.button:active {
+    transform: translateY(0);
+}
+
+/* ENLACES TEXTUALES */
+
+.text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+
+    color: var(--color-gray);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+
+    transition: color var(--transition);
+}
+
+.text-link:hover {
+    color: var(--color-white);
+}
+
+.text-link span {
+    font-size: 16px;
+    transition: transform var(--transition);
+}
+
+.text-link:hover span {
+    transform: translate(3px, -3px);
+}
+
+/* ACCESIBILIDAD */
+
+:focus-visible {
+    outline: 2px solid var(--color-silver);
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* RESPONSIVE GLOBAL */
+
+@media (max-width: 768px) {
+    :root {
+        --container-padding: 6%;
+    }
+
+    html {
+        scroll-padding-top: 80px;
+    }
+
+    .section {
+        padding-block: 80px;
+    }
+
+    .button {
+        min-height: 48px;
+        padding-inline: 18px;
+        gap: 12px;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 380px) {
+    :root {
+        --container-padding: 5%;
+    }
+
+    .button {
+        padding-inline: 14px;
+        gap: 10px;
+        font-size: 9px;
+    }
+}
