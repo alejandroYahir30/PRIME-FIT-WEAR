@@ -1,0 +1,21 @@
+
+{
+  "id": "/",
+  "short_name": "PRIME FIT",
+  "name": "PRIME FIT WEAR Admin",
+  "description": "Panel administrativo de PRIME FIT WEAR",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#0f1115",
+  "background_color": "#0f1115",
+  "icons": [
+    {
+      "src": "/pf-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
